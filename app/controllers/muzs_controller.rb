@@ -1,6 +1,6 @@
 class MuzsController < ApplicationController
 before_action :set_muz, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!, except: [:index]
+before_action :authenticate_user!, except: [:index, :show]
 
 # ********************** Actions
 
@@ -9,6 +9,7 @@ before_action :authenticate_user!, except: [:index]
   end
 
   def show
+    @comment = @muz.comments.all
   end
 
   def new

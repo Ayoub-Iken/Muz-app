@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
- resources :muzs
+ resources :muzs do 
+ 	resources :comments
+ end
 
  root 'muzs#index'
 

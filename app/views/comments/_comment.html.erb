@@ -1,0 +1,21 @@
+<div class="container-fluid comments-list clearfix hamid">
+<% @comment.each do |c| %>
+	<div class="row clearfix">
+		<div class="photo col">
+			<p><%= image_tag c.user.image.url, class: "img-rounded owner-pic-show"%></p>
+		</div>
+		<div class="comment col">
+			<p class="comment-text"> <strong><%= link_to c.user.name, "#" %></strong> <%= c.content%></p>
+			<% if user_signed_in? && current_user == c.user%>
+				<p class="deletecomment">
+				<%= link_to 'Delete', [c.muz, c], method: :delete, class: "btn btn-sm pull-right dltbtncmt",
+									 	data: { confirm: 'Are you sure?' } %>
+				</p>
+ 			<% end %> 
+		</div>
+	</div>
+	
+<% end %>
+</div>
+
+<!-- <%#<small><%= time_ago_in_words(comment.created_at)%> ago.</small> -->

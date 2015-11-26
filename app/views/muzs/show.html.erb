@@ -33,7 +33,17 @@
 					<% end %>
 					<!-- </div> -->
 				</div>
+				<div id="add-comments">
+					<hr>
+					<%= render "comments/form" %>
+				</div>
+			</div> <!-- End of Thumbnail's caption-->
+			<div class="comment-list">
+				<p class="stats"><%= pluralize(@muz.comments.count, "comment")%></p>
+					<%= render "comments/comment"%>
+
 			</div>
-		</div>
-	</div>
+		
+		</div> <!-- End Of Thumbnails class-->
+	</div> <!-- End Of Col-md-8-->
 </div>
