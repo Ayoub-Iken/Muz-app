@@ -1,0 +1,180 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$DeepSkyBlue3: #009ACD;
+$DeepSkyBlue1: #00BFFF;
+$firebrick3: #CD2626;
+$firebrick1: #FF3030;
+
+body {
+	padding-top: 75px;
+  background-color: #E0EEE0;
+}
+.shadow{
+	box-shadow: 0px 1px 1px 0px rgba(0,0,102,0.1);
+}
+
+.shadow2{
+	box-shadow: -1px -1px rgba(0,0,102,0.1);
+}
+
+.wrapper {
+min-height: calc( 100vh - 59px)
+}
+
+footer {
+      font-family: 'Open Sans', sans-serif;
+      color: #777777;
+       a {
+          color: #3E92A3;
+        &:hover {
+            color: #AEAEAE;
+          }
+        }
+       small {
+            float: left;
+            }
+
+       ul {
+          float: right;
+          list-style: none;
+          li {
+              float: left;
+              margin-left: 15px;
+            }
+          }
+    }
+
+  /*************************** NAVBAR /**/
+
+  .navbar{
+    background-color: white;
+  }
+
+
+/* ************************************************** Show page **********************************/
+  .thumbnail-show-principal {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.thumbnail-show-principal .box {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.owner-pic-show{
+  width: 38px;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.editbutton, .editbutton:visited{
+  color: $DeepSkyBlue3;
+  border: 1px solid $DeepSkyBlue3;
+  padding: 5px 10px;
+
+  &:hover{
+    color: white;
+    background-color: $DeepSkyBlue3;
+  }
+}
+
+.deletebutton, .deletebutton:visited{
+   color: $firebrick3;
+  border: 1px solid $firebrick3;
+  padding: 5px 10px;
+
+  &:hover{
+    color: white;
+    background-color: $firebrick3;
+  }
+}
+
+#imgdescription{
+  font-family: 'Georgia', sans-serif !important;
+  line-height: 28px;
+  font-size: 14px;
+  color: #141823;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-align: justify;
+
+}
+
+.imgtitle-show{
+  font-family: 'Lobster', cursive;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #3E92A3;
+}
+
+.signature-div{
+  position: relative;
+}
+
+.signature{
+  position: absolute;
+  top: 18px;
+  left: 80px;
+  color: #424242;
+  font-size: 14px;
+  font-family: 'Bad Script', cursive;
+}
+/************************************    INDEX PAGE ****************************************************/
+.imgtitle-index{
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  color: #3E92A3;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.imgdesc-index{
+  margin: 0;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  font-family: 'Georgia' serif;
+}
+
+  .thumbnail-index {
+    position: relative;
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.thumbnail-index .box {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+.muz-owner-picture{
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  top: -10px;
+  left: -15px;
+}

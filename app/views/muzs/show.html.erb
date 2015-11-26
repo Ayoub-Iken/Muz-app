@@ -1,0 +1,39 @@
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="thumbnail thumbnail-show-principal">
+			<p><%= image_tag @muz.picture.url, class: "center-block box"%></p>
+
+			<div class='row clearfix signature-div'>
+				<p  class="col-md-1"><%= image_tag @muz.user.image.url, class: "owner-pic-show img-circle" %></p>
+				<p class="signature"><%= @muz.user.name%> <small><%= time_ago_in_words(@muz.created_at)%> ago.</small></p>
+			</div>
+			
+			<div class="caption clearfix">
+				<h2 class="text-center imgtitle-show"> <%= @muz.title  %></h2>
+				<p id="imgdescription"> <%= @muz.description%></p>
+				<div class="row container-fluid">
+					<!-- <div class="pull-right"> -->
+					<% if current_user == @muz.user %>
+						<!-- <div class="pull-left">
+							<%#<%= link_to like_pin_path(@pin), method: :put, class: " btn btn-md likebutton disabled" do %>
+								<%#<span class="glyphicon glyphicon-heart heart">  <%=  @pin.get_upvotes.size%> </span>
+							<%#<% end %>
+						</div>	 -->
+						<div class="pull-right">
+							<%= link_to 'Edit', edit_muz_path, class: "btn btn-md editbutton" %>
+							<%= link_to 'Delete', muz_path, method: :delete, data: { confirm: "Are you sure ?"}, class: "btn btn-md deletebutton" %>
+						</div>
+					<% else %>
+						<!-- <div class="pull-right">
+							<%#<%= link_to like_pin_path(@pin), method: :put, class: " btn btn-md likebutton" do %>
+								<%#<span class="glyphicon glyphicon-heart heart">  <%=  @pin.get_upvotes.size%> </span>
+						<%#	<% end %>
+						</div> -->
+					<% end %>
+					<!-- </div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

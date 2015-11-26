@@ -1,0 +1,15 @@
+<div class="row clearfix">
+	<% @muzs.each do |m| %>
+	<div class="col-md-4">
+		<div class="thumbnail thumbnail-index">
+			<p><%= image_tag m.user.image.url, class: "muz-owner-picture img-circle" %></p>
+			<p><%= link_to (image_tag m.picture.url), m, class: "center-block box"%></p>
+			<div class="caption clearfix">
+				<h4 class="text-center imgtitle-index"> <%= m.title  %></h4>
+				<p class="imgdesc-index"> <%= truncate m.description, length: 100%></p>
+				<p><%= link_to 'View more', m, class: "btn btn-md btn-default pull-right" %></p>
+			</div>
+		</div>
+	</div>
+	<%end%>
+</div>

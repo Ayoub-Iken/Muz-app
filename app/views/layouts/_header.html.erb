@@ -1,0 +1,29 @@
+<div class="navbar navbar-fixed-top shadow">
+  <div class="navbar-inner">
+
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "MuZ", root_path, class: "navbar-brand", id: "logo" %>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+        <% if !user_signed_in? %>
+          <li><%= link_to "Sign up", new_user_registration_path%></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% else %>
+          <li><%= link_to current_user.name, edit_user_registration_path %></li>
+          <li><%= link_to 'Add Muz', new_muz_path %></li>
+          <li><%= link_to 'Log  out', destroy_user_session_path, method: :delete %></li>
+        <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+
+  </div>
+</div>

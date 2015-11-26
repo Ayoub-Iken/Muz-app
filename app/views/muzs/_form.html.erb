@@ -1,0 +1,17 @@
+<%= form_for(@muz, html: { multipart: true }) do |f| %>
+	 <%= render 'shared/error_messages', object: f.object %>
+	
+	<div class="form-group">
+		<%= f.file_field :picture %>
+	</div>
+
+	<div class="from-group">
+		<%= f.text_field :title, placeholder: "Title goes here", class: "form-control" %>
+	</div>
+<br>
+	<div class="form-group">
+		<%= f.text_area :description, placeholder: "Develop how...", class: "form-control" %>
+	</div>
+
+	<%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
