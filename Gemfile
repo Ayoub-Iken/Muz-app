@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'paperclip'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug'
