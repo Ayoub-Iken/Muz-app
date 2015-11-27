@@ -1,4 +1,6 @@
 
+<% votersup = voters_up(@muz)%>
+<% votersdown = voters_down(@muz)%>
 <div class="row">
 	<div class="col-md-8">
 		<div class="thumbnail thumbnail-show-principal">
@@ -12,34 +14,40 @@
 			<div class="caption clearfix">
 				<h2 class="text-center imgtitle-show"> <%= @muz.title  %></h2>
 				<p id="imgdescription"> <%= @muz.description%></p>
-				<div class="row container-fluid">
-					<!-- <div class="pull-right"> -->
+				<div class="row container-fluid optionbar">
+					
 					<% if current_user == @muz.user %>
-						<!-- <div class="pull-left">
-							<%#<%= link_to like_pin_path(@pin), method: :put, class: " btn btn-md likebutton disabled" do %>
-								<%#<span class="glyphicon glyphicon-heart heart">  <%=  @pin.get_upvotes.size%> </span>
-							<%#<% end %>
-						</div>	 -->
+					
 						<div class="pull-right">
 							<%= link_to 'Edit', edit_muz_path, class: "btn btn-md editbutton" %>
 							<%= link_to 'Delete', muz_path, method: :delete, data: { confirm: "Are you sure ?"}, class: "btn btn-md deletebutton" %>
 						</div>
 					<% else %>
-						<!-- <div class="pull-right">
-							<%#<%= link_to like_pin_path(@pin), method: :put, class: " btn btn-md likebutton" do %>
-								<%#<span class="glyphicon glyphicon-heart heart">  <%=  @pin.get_upvotes.size%> </span>
-						<%#	<% end %>
-						</div> -->
+						<div class="pull-right">
+							<% dis = user_voted_up(current_user, @muz)%>
+							<% dis2 = user_voted_down(current_user, @muz)%>
+							<%= link_to like_muz_path(@muz), method: :put, class: " btn like-btn btn-lg #{dis}" do %>
+								<span class="glyphicon glyphicon-thumbs-up"></span>
+							<% end %>
+
+							<%= link_to dislike_muz_path(@muz), method: :put, class: "btn btn-lg #{dis2}" do %>
+								<span class="glyphicon glyphicon-thumbs-down"></span>
+							<% end%>
+						</div>
 					<% end %>
-					<!-- </div> -->
-				</div>
+				
+				</div> <!-- END of OptionBar -->
 				<div id="add-comments">
 					<hr>
 					<%= render "comments/form" %>
 				</div>
 			</div> <!-- End of Thumbnail's caption-->
 			<div class="comment-list">
-				<p class="stats"><%= pluralize(@muz.comments.count, "comment")%></p>
+				<p class="stats">
+					<%= coments(@muz)%> 
+					<a href="#" data-toggle="tooltip" title="<%=  votersup.join(", ") %>" data-placement="top"><%= upvotes(@muz)%></a>
+				 	<a href="#" data-toggle="tooltip" title="<%=  votersdown.join(", ") %>" data-placement="top"><%= downvotes(@muz)%></a>
+				 </p>
 					<%= render "comments/comment"%>
 
 			</div>

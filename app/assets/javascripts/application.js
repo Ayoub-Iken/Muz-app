@@ -15,3 +15,13 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+$(document).ready(function() {
+	$(".stats a").click(function(e){
+		e.preventDefault();
+	});
+});

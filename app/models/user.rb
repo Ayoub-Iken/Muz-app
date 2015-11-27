@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	acts_as_voter
 	has_many :muzs, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
