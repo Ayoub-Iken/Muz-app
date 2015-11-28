@@ -10,6 +10,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
   def show
     @comment = @muz.comments.all
+    get_random
   end
 
   def new
@@ -55,9 +56,14 @@ before_action :authenticate_user!, except: [:index, :show]
   # ******************** METHODS
   private
 
+  def get_random
+    @randmuz = Muz.where.not(id: @muz.id, user_id: current_user.id).order("RANDOM()").limit(1).first
+  end
+
   def set_muz
   	@muz = Muz.find(params[:id])
   end
+
   def muz_params
   	params.require(:muz).permit(:title, :description, :picture)
   end

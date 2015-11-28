@@ -1,12 +1,17 @@
 
-<% votersup = voters_up(@muz)%>
-<% votersdown = voters_down(@muz)%>
+<% votersup = voters_up(@muz)%> <!--  Get the lists of people who liked the muz -->
+<% votersdown = voters_down(@muz)%> <!-- Get the list of the people who disliked the muz -->
+<% dis = user_voted_up(current_user, @muz)%> <!-- puts "disabled" if the user aleady liked the muz -->
+<% dis2 = user_voted_down(current_user, @muz)%> <!-- puts "disabled" if the user aleady disliked the muz -->
+<!-- preview thumbnail liking -->
+<% dis3 = user_voted_up(current_user, @randmuz)%> <!-- puts "disabled" if the user aleady liked the randmuz -->
+<% dis4 = user_voted_down(current_user, @randmuz)%> <!-- puts "disabled" if the user aleady disliked the randmuz -->
 <div class="row">
 	<div class="col-md-8">
 		<div class="thumbnail thumbnail-show-principal">
-			<p><%= image_tag @muz.picture.url, class: "center-block box"%></p>
+			<p><%= image_tag @muz.picture.url, class: "center-block box"%></p> <!-- the Muz picture -->
 
-			<div class='row clearfix signature-div'>
+			<div class='row clearfix signature-div'> <!-- The user picture and date of submit -->
 				<p  class="col-md-1"><%= image_tag @muz.user.image.url, class: "owner-pic-show img-circle" %></p>
 				<p class="signature"><%= @muz.user.name%> <small><%= time_ago_in_words(@muz.created_at)%> ago.</small></p>
 			</div>
@@ -14,18 +19,17 @@
 			<div class="caption clearfix">
 				<h2 class="text-center imgtitle-show"> <%= @muz.title  %></h2>
 				<p id="imgdescription"> <%= @muz.description%></p>
-				<div class="row container-fluid optionbar">
+				<div class="row container-fluid optionbar">  <!-- OptionBar : Edit, Delete, Like, Dislike -->
 					
-					<% if current_user == @muz.user %>
+					<% if current_user == @muz.user %> <!-- if current_user is the one submitted the Muz, show edit delete -->
 					
 						<div class="pull-right">
 							<%= link_to 'Edit', edit_muz_path, class: "btn btn-md editbutton" %>
 							<%= link_to 'Delete', muz_path, method: :delete, data: { confirm: "Are you sure ?"}, class: "btn btn-md deletebutton" %>
 						</div>
-					<% else %>
+					<% else %> <!-- if not the muz's owner give him the ability to like or dislike -->
 						<div class="pull-right">
-							<% dis = user_voted_up(current_user, @muz)%>
-							<% dis2 = user_voted_down(current_user, @muz)%>
+							
 							<%= link_to like_muz_path(@muz), method: :put, class: " btn like-btn btn-lg #{dis}" do %>
 								<span class="glyphicon glyphicon-thumbs-up"></span>
 							<% end %>
@@ -39,19 +43,41 @@
 				</div> <!-- END of OptionBar -->
 				<div id="add-comments">
 					<hr>
-					<%= render "comments/form" %>
+					<%= render "comments/form" %> <!-- add a new comment  -->
 				</div>
 			</div> <!-- End of Thumbnail's caption-->
 			<div class="comment-list">
-				<p class="stats">
+				<p class="stats"> <!-- number of comments/likes/dislikes, and tooltip person's names -->
 					<%= coments(@muz)%> 
 					<a href="#" data-toggle="tooltip" title="<%=  votersup.join(", ") %>" data-placement="top"><%= upvotes(@muz)%></a>
 				 	<a href="#" data-toggle="tooltip" title="<%=  votersdown.join(", ") %>" data-placement="top"><%= downvotes(@muz)%></a>
 				 </p>
-					<%= render "comments/comment"%>
+					<%= render "comments/comment"%> <!-- Lists all the comments -->
 
 			</div>
 		
 		</div> <!-- End Of Thumbnails class-->
 	</div> <!-- End Of Col-md-8-->
+
+	<div class="col-md-3 col-md-offset-1">
+		<div class="thumbnail thumbnail-preview">
+			<p><%= image_tag @randmuz.user.image.url, class: "muz-owner-picture-preview img-circle" %></p> <!-- user picture -->
+			<p><%= link_to (image_tag @randmuz.picture.url), @randmuz, class: "center-block box"%></p> <!-- Muz picture -->
+				<!--  Caption -->
+			<div class="caption clearfix">
+				<h4 class="text-center imgtitle-index"> <%= @randmuz.title  %></h4>
+				<p class="imgdesc-index"> <%= truncate @randmuz.description, length: 60%></p>
+			</div> <!-- End of caption-->
+			<div class="container-fluid clearfix  lk-preview"> <!-- made to make the like/dislike button fit into the thumbnail -->
+				<div class="pull-right">
+					<%= link_to like_muz_path(@randmuz), method: :put, class: " btn like-btn btn-md #{dis3}" do %>
+						<span class="glyphicon glyphicon-thumbs-up"> <%= @randmuz.get_upvotes.size%></span>
+					<% end %>
+					<%= link_to dislike_muz_path(@randmuz), method: :put, class: "btn btn-md #{dis4}" do %>
+						<span class="glyphicon glyphicon-thumbs-down"> <%= @randmuz.get_downvotes.size%></span>
+					<% end%>
+				</div>
+			</div> <!-- End of container-fluid -->
+		</div> <!-- End of Thumbnail -->
+	</div><!-- End of col-md -->
 </div>

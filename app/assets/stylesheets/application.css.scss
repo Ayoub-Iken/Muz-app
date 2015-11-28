@@ -236,6 +236,34 @@ hr{
   margin-bottom: 30px;
 }
 
+.thumbnail-preview {
+    padding: 0 0 0 0;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.thumbnail-preview .box {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.lk-preview{
+  padding: 5px;
+}
+
+.muz-owner-picture-preview{
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  top: -2px;
+  left: -5px;
+}
+
+
+
 .comment-input:hover, 
 input:hover, 
 .comment-input:active, 
