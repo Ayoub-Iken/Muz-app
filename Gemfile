@@ -18,8 +18,11 @@ gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug'
+  gem "awesome_print"
+  gem 'wirble', '~> 0.1.3'
 end
 group :development do
+  gem 'meta_request'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
